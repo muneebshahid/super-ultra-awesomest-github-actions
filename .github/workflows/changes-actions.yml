@@ -28,7 +28,7 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        echo "Summarize: ${current_contents}"
+        echo "Summarize: $(cat test.py)"
         openai api completions.create -m text-davinci-003 -p "Summarize: ${current_contents}" -t 0.7 -M 256 --stream
 
 
