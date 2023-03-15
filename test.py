@@ -11,5 +11,7 @@ def test_print_dir_contents(dir_: str):
         print(content)
 
 
-def test_func3(x):
-    return x + 9
+def do_random_stuff():
+    from random import randint
+
+    return randint(0, 100)
