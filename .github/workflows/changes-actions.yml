@@ -20,6 +20,10 @@ jobs:
         # print the combined contents
         echo "$current_contents"
 
+    - name: pip install openai
+      run: |
+        pip install openai
+
     - name: Get file summary from OpenAI
       run: |
         # Call openai api
