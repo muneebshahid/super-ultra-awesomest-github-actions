@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 2
 
     - name: Concatenate current and previous file contents
       run: |
@@ -18,7 +20,8 @@ jobs:
         current_contents=$(cat test.py)
 
         # # print the combined contents
-        # previous_contents=$(git show ${{ github.event.before }}:test.py)
+        # previous_contents=$(git show ${{ github.event.before }}:test.py
+        echo ($git diff origin/main HEAD~)
 
     - name: Print previous commit
       run: echo ${{ github.event.before }}
