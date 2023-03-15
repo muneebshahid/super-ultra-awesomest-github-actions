@@ -21,7 +21,7 @@ jobs:
 
         # # print the combined contents
         # previous_contents=$(git show ${{ github.event.before }}:test.py
-        echo ($git diff origin/main HEAD~)
+        echo $(git diff origin/main HEAD~)
 
     - name: Print previous commit
       run: echo ${{ github.event.before }}
