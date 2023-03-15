@@ -20,9 +20,8 @@ jobs:
         # print the combined contents
         echo "$current_contents"
 
-      - name: Get previous commit
-        run: |
-          echo "::set-output name=sha::$(git rev-parse HEAD~1)"
+    - name: Print previous commit
+        run: echo "The previous commit was ${{ github.event.before }}"
 
     - name: Install dependencies
       run: |
