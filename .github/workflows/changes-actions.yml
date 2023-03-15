@@ -29,12 +29,12 @@ jobs:
         # print the combined contents
         echo "$combined_contents"
 
-    # - name: Get file summary from OpenAI
-    #   uses: OpenAI/gh-action@v1
-    #   with:
-    #     api_key: ${{ secrets.OPENAI_API_KEY }}
-    #     engine: text-davinci-002
-    #     prompt: |
-    #       Please summarize the changes made in the file.txt file between the current and previous commits:
+    - name: Get file summary from OpenAI
+      uses: OpenAI/gh-action@v1
+      with:
+        api_key: ${{ secrets.OPENAI_API_KEY }}
+        engine: text-davinci-002
+        prompt: |
+          Please summarize the code in the file.txt:
 
-    #       ${combined_contents}
+          ${combined_contents}
