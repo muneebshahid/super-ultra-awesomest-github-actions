@@ -34,7 +34,7 @@ jobs:
         echo "Calling OpenAI API"
         openai api completions.create -m text-davinci-003 -p "Add docstring to any function that might be missing docstrings: $(cat test.py)" -t 0.7 -M 512 --stream
 
-  - name: Create summary for PR
+    - name: Create summary for PR
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
