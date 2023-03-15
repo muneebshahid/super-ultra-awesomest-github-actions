@@ -32,6 +32,7 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         echo $(git diff main~1)
+        hello
         openai api completions.create -m text-davinci-003 -p "Summarize the file in a concise manner and add a docstring to any function that might be missing docstrings: $(cat test.py)" -t 0.7 -M 256 --stream
 
 
