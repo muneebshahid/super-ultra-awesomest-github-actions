@@ -22,7 +22,7 @@ jobs:
 
       - name: Get previous commit
         run: |
-          run: echo "The previous commit was ${{ github.event.before }}"
+          echo "::set-output name=sha::$(git rev-parse HEAD~1)"
 
     - name: Install dependencies
       run: |
