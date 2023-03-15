@@ -4,3 +4,7 @@ def test_func(x):
 
 def test_fun(x):
     return x + 2
+
+
+def test_func3(x):
+    return x + 9
