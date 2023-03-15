@@ -1,23 +1,15 @@
-name: Basic workflow action
-
-run-name: "${{ github.actor }} added some changes :rocket:"
+name: Send Slack Message
+description: Sends a direct message to a Slack channel
 
 on: [push]
 
 jobs:
-  check-bats-version:
+  send_message:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Send Slack Message
+        uses: andrewsosa/send-slack-message@v1.0.0
         with:
-          node-version: "14"
-      - run: npm install -g bats
-      - run: bats -v
-      - name: "Write Slack message"
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          channel-id: "D012DTP0RPT"
-          slack-message: "It's alive :rocket::rocket:"
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          slack-user-id: SLACK_USER_ID
+          message: "It's alive :rocket::rocket:"
