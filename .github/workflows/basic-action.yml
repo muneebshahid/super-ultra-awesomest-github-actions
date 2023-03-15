@@ -1,6 +1,6 @@
 name: Basic workflow action
 
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: "${{ github.actor }} added some changes :rocket:"
 
 on: [push]
 
