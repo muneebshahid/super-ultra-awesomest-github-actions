@@ -27,11 +27,18 @@ jobs:
       run: |
         python -m pip install openai
 
-    - name: Call OpenAI code completion API
+    - name: Add docstrings to missing functions
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         echo "Calling OpenAI API"
-        openai api completions.create -m text-davinci-003 -p "Summarize the file in a concise manner and add a docstring to any function that might be missing docstrings: $(cat test.py)" -t 0.7 -M 512 --stream
+        openai api completions.create -m text-davinci-003 -p "Add docstring to any function that might be missing docstrings: $(cat test.py)" -t 0.7 -M 512 --stream
+        # openai api completions.create -m text-davinci-003 -p "Summarize the file in a concise manner and add a docstring to any function that might be missing docstrings: $(cat test.py)" -t 0.7 -M 512 --stream
 
+  - name: Create summary for PR
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        echo "Calling OpenAI API"
+        openai api completions.create -m text-davinci-003 -p "Summarize the file in a concise manner for a pr comment: $(cat test.py)" -t 0.7 -M 512 --stream
 
