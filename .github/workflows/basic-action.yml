@@ -7,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Message
-        uses: andrewsosa/send-slack-message@v1.0.0
+        uses: slackapi/slack-github-action@v1.23.0
         with:
-          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          slack-user-id: SLACK_USER_ID
-          message: "It's alive :rocket::rocket:"
+          user-id: ${{ secrets.SLACK_USER_ID }}
+          slack-message: "It's alive :rocket::rocket:"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
