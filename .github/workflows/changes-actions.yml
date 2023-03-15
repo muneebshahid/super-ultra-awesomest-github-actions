@@ -20,6 +20,10 @@ jobs:
         # print the combined contents
         echo "$current_contents"
 
+      - name: Get previous commit
+        run: |
+          run: echo "The previous commit was ${{ github.event.before }}"
+
     - name: Install dependencies
       run: |
         python -m pip install openai
@@ -28,7 +32,6 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        echo "Summarize: $(cat test.py)"
         openai api completions.create -m text-davinci-003 -p "Summarize: $(cat test.py)" -t 0.7 -M 256 --stream
 
 
