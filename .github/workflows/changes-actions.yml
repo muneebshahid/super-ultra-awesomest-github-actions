@@ -21,7 +21,7 @@ jobs:
         echo "$current_contents"
 
     - name: Print previous commit
-        run: echo "The previous commit was ${{ github.event.before }}"
+      run: echo ${{ github.event.before }}
 
     - name: Install dependencies
       run: |
