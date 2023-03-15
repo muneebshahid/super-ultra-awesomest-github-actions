@@ -17,8 +17,8 @@ jobs:
         # get the file contents from the current commit
         current_contents=$(cat test.py)
 
-        # print the combined contents
-        previous_contents=$(git show ${{ github.event.before }}:test.py)
+        # # print the combined contents
+        # previous_contents=$(git show ${{ github.event.before }}:test.py)
 
     - name: Print previous commit
       run: echo ${{ github.event.before }}
@@ -31,6 +31,6 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        openai api completions.create -m text-davinci-003 -p "Summarize: $(cat test.py)" -t 0.7 -M 256 --stream
+        openai api completions.create -m text-davinci-003 -p "Summarize the file in a concise manner and add a docstring to any function that might be missing docstrings: $(cat test.py)" -t 0.7 -M 256 --stream
 
 
