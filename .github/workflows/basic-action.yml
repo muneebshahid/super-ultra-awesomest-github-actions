@@ -9,13 +9,10 @@ jobs:
   send_message:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Send Slack Message
+      - name: "Write Slack message"
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          channel-id: ${{ secrets.SLACK_USER_ID }}
+          channel-id: "${{ secrets.SLACK_USER_ID }}"
           slack-message: "It's alive :rocket::rocket:"
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
