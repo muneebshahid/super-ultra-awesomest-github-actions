@@ -9,7 +9,8 @@ jobs:
       - name: Send Slack Message
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          user-id: ${{ secrets.SLACK_USER_ID }}
+          channel-id: ${{ secrets.SLACK_USER_ID }}
           slack-message: "It's alive :rocket::rocket:"
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_USER_ID: ${{ secrets.SLACK_USER_ID }}
