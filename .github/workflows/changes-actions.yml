@@ -20,20 +20,13 @@ jobs:
         # print the combined contents
         echo "$current_contents"
 
-    - name: pip install openai
+    - name: Install dependencies
       run: |
-        pip install openai
+        python -m pip install openai
 
-    - name: Get file summary from OpenAI
+    - name: Call OpenAI code completion API
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        # Call openai api
-        openai api completions.create \
-          --engine ada \
-          --prompt "Summarize: $current_contents" \
-          --max_tokens 256 \
-          --temperature 0.7 \
-          --top_p 1 \
-          --frequency_penalty 0 \
-          --presence_penalty 0 \
-          --stop "###"
+        openai api completions.create -m text-davinci-003 -p "Say this is a test" -t 0 -M 7 --stream
 
