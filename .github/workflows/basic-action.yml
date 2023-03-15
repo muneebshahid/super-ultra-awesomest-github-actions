@@ -14,3 +14,10 @@ jobs:
           node-version: "14"
       - run: npm install -g bats
       - run: bats -v
+      - name: "Write Slack message"
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: "D012DTP0RPT"
+          slack-message: "It's alive :rocket::rocket:"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
