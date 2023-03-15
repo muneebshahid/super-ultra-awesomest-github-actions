@@ -17,14 +17,14 @@ jobs:
         # get the file contents from the current commit
         current_contents=$(cat test.py)
 
-        # get the SHA of the previous commit
-        prev_commit_sha=$(git rev-parse HEAD~1)
+        # # get the SHA of the previous commit
+        # prev_commit_sha=$(git rev-parse HEAD~1)
 
-        # get the file contents from the previous commit
-        prev_contents=$(git show ${prev_commit_sha}:test.py)
+        # # get the file contents from the previous commit
+        # prev_contents=$(git show ${prev_commit_sha}:test.py)
 
         # concatenate the current and previous contents with a separator
-        combined_contents="${current_contents}^^^^^^^^^^^^${prev_contents}"
+        combined_contents="${current_contents}^^^^^^^^^^^^${current_contents}"
 
         # print the combined contents
         echo "$combined_contents"
