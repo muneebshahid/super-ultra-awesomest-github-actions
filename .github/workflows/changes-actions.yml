@@ -44,3 +44,10 @@ jobs:
         echo "Calling OpenAI API"
         openai api completions.create -m text-davinci-003 -p "Summarize the file in a concise manner for a pr comment: $(cat test.py)" -t 0.7 -M 512 --stream
 
+    - name: Summarize differences
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        echo "Calling OpenAI API"
+        openai api completions.create -m text-davinci-003 -p "Summarize git diff in human readable way: $(git diff origin/main HEAD~)" -t 0.7 -M 512 --stream
+
