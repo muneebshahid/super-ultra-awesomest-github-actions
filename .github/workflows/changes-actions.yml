@@ -1,0 +1,40 @@
+name: Get file summary using OpenAI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  get-file-summary:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Concatenate current and previous file contents
+      run: |
+        # get the file contents from the current commit
+        current_contents=$(cat file.txt)
+
+        # get the SHA of the previous commit
+        prev_commit_sha=$(git rev-parse HEAD~1)
+
+        # get the file contents from the previous commit
+        prev_contents=$(git show ${prev_commit_sha}:file.txt)
+
+        # concatenate the current and previous contents with a separator
+        combined_contents="${current_contents}^^^^^^^^^^^^${prev_contents}"
+
+        # print the combined contents
+        echo "$combined_contents"
+
+    # - name: Get file summary from OpenAI
+    #   uses: OpenAI/gh-action@v1
+    #   with:
+    #     api_key: ${{ secrets.OPENAI_API_KEY }}
+    #     engine: text-davinci-002
+    #     prompt: |
+    #       Please summarize the changes made in the file.txt file between the current and previous commits:
+
+    #       ${combined_contents}
