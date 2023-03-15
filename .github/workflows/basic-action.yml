@@ -1,5 +1,4 @@
 name: Send Slack Message
-description: Sends a direct message to a Slack channel
 
 on: [push]
 
