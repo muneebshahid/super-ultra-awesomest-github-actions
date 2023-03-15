@@ -18,7 +18,7 @@ jobs:
         current_contents=$(cat test.py)
 
         # print the combined contents
-        echo "$current_contents"
+        previous_contents=$(git show ${{ github.event.before }}:test.py)
 
     - name: Print previous commit
       run: echo ${{ github.event.before }}
